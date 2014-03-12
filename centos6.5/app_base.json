@@ -3,12 +3,13 @@
     {
       "type": "shell",
       "scripts": [
+        "scripts/xbuild.sh"
       ],
       "override": {
         "virtualbox-ovf": {
           "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'"
         },
-        "vmware-iso": {
+        "vmware-vmx": {
           "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'"
         }
       }
@@ -17,13 +18,12 @@
   "builders": [
     {
       "type": "virtualbox-ovf",
-      "source_path": "source.ovf",
+      "source_path": "output-virtualbox-iso/packer-virtualbox-iso.ovf",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "ssh_port": 22,
       "ssh_wait_timeout": "10000s",
-      "shutdown_command": "echo '/sbin/halt -h -p' > shutdown.sh; echo 'vagrant'|sudo -S sh 'shutdown.sh'",
-      "http_directory": "http",
+      "shutdown_command": "echo '/sbin/halt -h -p' > shutdown.sh; echo 'vagrant'|sudo -S sh 'shutdown.sh'"
     },
     {
       "type": "vmware-vmx",
@@ -32,7 +32,7 @@
       "ssh_password": "vagrant",
       "ssh_port": 22,
       "ssh_wait_timeout": "10000s",
-      "shutdown_command": "echo '/sbin/halt -h -p' > shutdown.sh; echo 'vagrant'|sudo -S sh 'shutdown.sh'",
+      "shutdown_command": "echo '/sbin/halt -h -p' > shutdown.sh; echo 'vagrant'|sudo -S sh 'shutdown.sh'"
     }
   ],
   "post-processors": ["vagrant"]
