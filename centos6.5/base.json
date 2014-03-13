@@ -11,7 +11,8 @@
         "scripts/virtualbox.sh",
         "scripts/epel.sh",
         "scripts/ansible.sh",
-        "scripts/cleanup.sh"
+        "scripts/cleanup.sh",
+        "scripts/cleanup_device.sh"
       ],
       "override": {
         "base-virtualbox-iso": {
