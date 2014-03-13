@@ -1,4 +1,7 @@
 {
+  "variables": {
+    "ks_file": "ks.cfg"
+  },
   "provisioners": [
     {
       "type": "shell",
@@ -11,10 +14,10 @@
         "scripts/cleanup.sh"
       ],
       "override": {
-        "virtualbox-iso": {
+        "base-virtualbox-iso": {
           "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'"
         },
-        "vmware-iso": {
+        "base-vmware-iso": {
           "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'"
         }
       }
@@ -22,9 +25,10 @@
   ],
   "builders": [
     {
+      "name": "base-virtualbox-iso",
       "type": "virtualbox-iso",
       "boot_command": [
-        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `ks_file` }}<enter><wait>"
       ],
       "boot_wait": "10s",
       "disk_size": 40520,
@@ -56,9 +60,10 @@
       ]
     },
     {
+      "name": "base-vmware-iso",
       "type": "vmware-iso",
       "boot_command": [
-        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `ks_file` }}<enter><wait>"
       ],
       "boot_wait": "10s",
       "disk_size": 40520,
