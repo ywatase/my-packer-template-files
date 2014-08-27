@@ -3,7 +3,7 @@
     {
       "type": "shell",
       "scripts": [
-        "scripts/repository.sh"
+        "scripts/repository.sh",
         "scripts/xbuild.sh"
       ],
       "override": {
@@ -19,7 +19,7 @@
   "builders": [
     {
       "type": "virtualbox-ovf",
-      "source_path": "output-virtualbox-iso/packer-virtualbox-iso.ovf",
+      "source_path": "output-base-virtualbox-iso/packer-base-virtualbox-iso.ovf",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "ssh_port": 22,
