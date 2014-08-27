@@ -1,6 +1,7 @@
 {
   "variables": {
-    "ks_file": "ks.cfg"
+    "ks_file": "ks.cfg",
+    "disk_size_mb": "40520"
   },
   "provisioners": [
     {
@@ -32,7 +33,7 @@
         "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `ks_file` }}<enter><wait>"
       ],
       "boot_wait": "10s",
-      "disk_size": 40520,
+      "disk_size": "{{ user `disk_size_mb` }}",
       "guest_os_type": "RedHat_64",
       "http_directory": "http",
       "iso_checksum": "0d9dc37b5dd4befa1c440d2174e88a87",
@@ -67,7 +68,7 @@
         "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `ks_file` }}<enter><wait>"
       ],
       "boot_wait": "10s",
-      "disk_size": 40520,
+      "disk_size": "{{ user `disk_size_mb` }}",
       "guest_os_type": "rhel6-64",
       "http_directory": "http",
       "iso_checksum": "0d9dc37b5dd4befa1c440d2174e88a87",
