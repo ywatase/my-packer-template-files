@@ -3,6 +3,7 @@
     {
       "type": "shell",
       "scripts": [
+        "scripts/repository.sh"
         "scripts/xbuild.sh"
       ],
       "override": {
