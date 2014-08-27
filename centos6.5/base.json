@@ -1,6 +1,7 @@
 {
   "variables": {
     "ks_file": "ks.cfg",
+    "run_virtualbox.sh": "yes",
     "disk_size_mb": "40520"
   },
   "provisioners": [
@@ -14,6 +15,9 @@
         "scripts/ansible.sh",
         "scripts/cleanup.sh",
         "scripts/cleanup_device.sh"
+      ],
+      "environment_vars": [
+        "RUN_VIRTUALBOX_SHELL={{ user `run_virtualbox.sh` }}"
       ],
       "override": {
         "base-virtualbox-iso": {
